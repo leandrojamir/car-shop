@@ -38,6 +38,14 @@ class CarsServices {
    
     return this.createCarDomain(result);
   }
+
+  // 04 - Crie a rota /cars/:id onde seja possível atualizar um carro por ID
+  public async putCarsServices(car: string, carBody: object) {
+    const CarsModels = new CarODM();
+    const result = await CarsModels.update(car, carBody);
+    
+    return this.createCarDomain(result);
+  }
 }
 
 export default CarsServices;

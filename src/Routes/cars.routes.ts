@@ -11,4 +11,8 @@ routes.post('/', (req, res, next) => new CarsControllers(req, res, next).postCar
 routes.get('/', (req, res, next) => new CarsControllers(req, res, next).getCarsControllers());
 routes.get('/:id', (req, res, next) => new CarsControllers(req, res, next).getIdCarsControllers());
 
+// 04 - Crie a rota /cars/:id onde seja possível atualizar um carro por ID
+// O endpoint deve ser acessível através do caminho (/cars/:id);
+routes.put('/:id', (req, res, next) => new CarsControllers(req, res, next).putCarsControllers());
+
 export default routes;

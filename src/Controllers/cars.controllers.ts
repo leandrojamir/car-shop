@@ -76,6 +76,44 @@ class CarsControllers {
       return this.res.status(422).json({ message: 'Invalid mongo id' });
     }
   }
+  // 04 - Crie a rota /cars/:id onde seja possível atualizar um carro por ID
+  // Apenas o carro com o id presente na URL deve ser atualizado;
+  public async putCarsControllers() {
+    const { id } = this.req.params;
+    const carBody: ICar = { ...this.req.body };
+    try {
+      const result = await this.service.getIdCarsServices(id);
+      const updated = await this.service.putCarsServices(id, carBody);
+      // Será validado que não é possível alterar um carro que não existe;
+      if (!result) {
+        // Deve-se retornar o status 404 e um JSON com a seguinte mensagem:   { "message": "Car not found" }
+        return this.res.status(404).json({ message: 'Car not found' });
+      }
+      // Será validado que é possível alterar um carro com sucesso;
+      return this.res.status(200).json(updated);
+      
+      // http://localhost:3001/cars/63f2f653121b553dcc3044a2
+      // Status: 200 OK
+      // Size: 149 Bytes
+      // Time: 132 ms
+      // Response Headers6 Cookies Results Docs
+      // {
+      //   "id": "63f2f653121b553dcc3044a2",
+      //   "model": "TrocarMareaParaBomba",
+      //   "year": 2002,
+      //   "color": "Black",
+      //   "status": true,
+      //   "buyValue": 15.99,
+      //   "doorsQty": 4,
+      //   "seatsQty": 5
+      // }
+
+      // Será validado que não é possível alterar um carro quando o formato do id esta inválido;
+    } catch (error) {
+      // Deve-se retornar o status 422 e um JSON com a seguinte mensagem:  { "message": "Invalid mongo id" }
+      return this.res.status(422).json({ message: 'Invalid mongo id' });
+    }
+  }
 } 
 
 export default CarsControllers;
@@ -110,3 +148,9 @@ export default CarsControllers;
 //   ✓ Será validado que não é possível listar um carro que não existe (300 ms)
 //   ✓ Será validado que não é possível listar um carro quando o formato do id esta inválido (253 ms)
 //   ✓ Será validado que é possível listar um carro específico com sucesso (291 ms)
+
+// PASS  __tests__/04 - updateCar.test.ts (19.297 s)
+// 04 - Crie a rota /cars/:id onde seja possível atualizar um carro por ID
+//   ✓ Será validado que não é possível alterar um carro que não existe (495 ms)
+//   ✓ Será validado que não é possível alterar um carro quando o formato do id esta inválido (256 ms)
+//   ✓ Será validado que é possível alterar um carro com sucesso (372 ms)
