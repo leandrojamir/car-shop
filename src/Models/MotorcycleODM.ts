@@ -46,6 +46,23 @@ class MotorcycleODM extends AbstractODM <IMotorcycle> {
     //     at processTicksAndRejections (node:internal/process/task_queues:78:11)
     super(schema, 'motorcycle');
   }
+  // 07 - Crie a rota /motorcycles onde seja possível listar motos
+  
+  //   // 02 - Crie o endpoint para listar carros
+  //   public async getAll(): Promise<ICar[]> {
+  //     return this.model.find();
+  //   }
+  //   // https://github.com/tryber/poo-trix/blob/application-live-lectures-part-2/src/Models/KeyODM.ts
+  //   public async getId(value: string): Promise<ICar | null> {
+  //     return this.model.findById(value);
+  //   }
+  public async getAll(): Promise <IMotorcycle[]> {
+    return this.model.find();
+  }
+
+  public async getId(value: string): Promise <IMotorcycle | null> {
+    return this.model.findById(value);
+  }
 }
 
 export default MotorcycleODM;
