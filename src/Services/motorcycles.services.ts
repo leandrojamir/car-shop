@@ -12,6 +12,7 @@ class MotorcyclesServices {
     return null;
   }
 
+  // 05 - Crie a rota /motorcycles onde seja possível cadastrar uma moto
   public async postMotorcyclesServices(motorcycle: IMotorcycle) {
     const MotorcyclesModels = new MotorcycleODM();
     const result = await MotorcyclesModels.create(motorcycle);

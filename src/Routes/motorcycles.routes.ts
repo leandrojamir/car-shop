@@ -4,6 +4,7 @@ import MotorcyclesControllers from '../Controllers/motorcycles.controllers';
 
 const routes = Router();
 
+// 05 - Crie a rota /motorcycles onde seja possível cadastrar uma moto
 routes.post('/', (req, res, next) => new MotorcyclesControllers(req, res, next)
   .postMotorcyclesControllers());
 
@@ -14,6 +15,8 @@ routes.get('/', (req, res, next) => new MotorcyclesControllers(req, res, next)
 routes.get('/:id', (req, res, next) => new MotorcyclesControllers(req, res, next)
   .getIdMotorcyclesControllers());
 
+// 08 - Crie a rota /motorcycles/:id onde seja possível atualizar uma moto por ID
+// O endpoint deve ser acessível através do caminho (/motorcycles/:id);
 routes.put('/:id', (req, res, next) => new MotorcyclesControllers(req, res, next)
   .putMotorcyclesControllers());
   
