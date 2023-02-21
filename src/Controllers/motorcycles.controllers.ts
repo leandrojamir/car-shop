@@ -61,6 +61,46 @@ class MotorcyclesControllers {
       return this.res.status(422).json({ message: 'Invalid mongo id' });
     }
   }
+
+  // 08 - Crie a rota /motorcycles/:id onde seja possível atualizar uma moto por ID
+  public async putMotorcyclesControllers() {
+    const { id } = this.req.params;
+    const motorcycleBody: IMotorcycle = { ...this.req.body };
+    try {
+      const result = await this.service.getIdMotorcyclesServices(id);
+      const updated = await this.service.putMotorcyclesServices(id, motorcycleBody);
+
+      // Será validado que não é possível alterar uma moto que não existe;
+      if (!result) {
+        // Deve-se retornar o status 404 e um JSON com a seguinte mensagem:
+        //   { "message": "Motorcycle not found" }
+        return this.res.status(404).json({ message: 'Motorcycle not found' });
+      }
+      
+      // Será validado que é possível alterar uma moto com sucesso;
+      return this.res.status(200).json(updated);
+      // http://localhost:3001/motorcycles/63f52a4c882dc6a7326c3666
+      //   Status: 200 OK
+      //   Size: 157 Bytes
+      //   Time: 46 ms
+      //   {
+      //     "id": "63f52a4c882dc6a7326c3666",
+      //     "model": "CG 125 alterada",
+      //     "year": 1999,
+      //     "color": "Red",
+      //     "status": true,
+      //     "buyValue": 9.999,
+      //     "category": "Street",
+      //     "engineCapacity": 200
+      //   }
+
+    // Será validado que não é possível alterar uma moto quando o formato do id esta inválido;
+    } catch (error) {
+      // Deve-se retornar o status 422 e um JSON com a seguinte mensagem:
+      //   { "message": "Invalid mongo id" }
+      return this.res.status(422).json({ message: 'Invalid mongo id' });
+    }
+  }
 }
 
 export default MotorcyclesControllers;
@@ -116,3 +156,9 @@ export default MotorcyclesControllers;
 //   ✓ Será validado que não é possível listar uma moto que não existe (166 ms)
 //   ✓ Será validado que não é possível listar uma moto quando o formato do id esta inválido (168 ms)
 //   ✓ Será validado que é possível listar uma moto específica com sucesso (164 ms)
+
+// PASS  __tests__/08 - updateMotorcycle.test.ts (11.363 s)
+// 08 - Crie a rota /motorcycles/:id onde seja possível atualizar uma moto por ID
+//   ✓ Será validado que não é possível alterar uma moto que não existe (271 ms)
+//   ✓ Será validado que não é possível alterar uma moto quando o formato do id esta inválido (167 ms)
+//   ✓ Será validado que é possível alterar uma moto com sucesso (181 ms)

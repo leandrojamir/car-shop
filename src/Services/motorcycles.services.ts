@@ -18,7 +18,7 @@ class MotorcyclesServices {
     
     return this.createMotorcycleDomain(result);
   }
-  
+
   // 07 - Crie a rota /motorcycles onde seja possível listar motos
   public async getMotorcyclesServices() {
     const MotorcyclesModels = new MotorcycleODM();
@@ -30,6 +30,14 @@ class MotorcyclesServices {
   public async getIdMotorcyclesServices(motorcycle: string) {
     const MotorcyclesModels = new MotorcycleODM();
     const result = await MotorcyclesModels.getId(motorcycle);
+
+    return this.createMotorcycleDomain(result);
+  }
+
+  // 08 - Crie a rota /motorcycles/:id onde seja possível atualizar uma moto por ID
+  public async putMotorcyclesServices(motorcycle: string, motorcycleBody: object) {
+    const MotorcyclesModels = new MotorcycleODM();
+    const result = await MotorcyclesModels.update(motorcycle, motorcycleBody);
 
     return this.createMotorcycleDomain(result);
   }
