@@ -143,3 +143,9 @@ export default MotorcyclesControllers;
 // Status: 204 No Content
 // Size: 0 Bytes
 // Time: 18 ms
+
+// Apenas reenviando, erro evaluator
+// [INFO] Checking changes in protected files
+// [INFO] Sending evaluation information using → production
+// Error:  Evaluation could not be sent. Status: 404. Data: {"message":"Delivery not found"}
+// Error: Process completed with exit code 1.
