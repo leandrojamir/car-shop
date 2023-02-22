@@ -15,4 +15,9 @@ routes.get('/:id', (req, res, next) => new CarsControllers(req, res, next).getId
 // O endpoint deve ser acessível através do caminho (/cars/:id);
 routes.put('/:id', (req, res, next) => new CarsControllers(req, res, next).putCarsControllers());
 
+// 10 - Crie a rota /cars/:id onde seja possível excluir um carro por ID
+// O endpoint pode ser acessível através do caminho (/cars/:id);
+routes.delete('/:id', (req, res, next) => new CarsControllers(req, res, next)
+  .deleteCarsControllers());
+
 export default routes;

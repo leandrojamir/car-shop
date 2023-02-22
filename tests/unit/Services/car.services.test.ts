@@ -111,21 +111,6 @@ describe('Testar post get e put da CarsServices', function () {
     expect(result).to.be.deep.equal(outputCar);
   });
 
-  // http://localhost:3001/cars/63f2f653121b553dcc3044a2
-  // Status: 200 OK
-  // Size: 149 Bytes
-  // Time: 132 ms
-  // Response Headers6 Cookies Results Docs
-  // {
-  //   "id": "63f2f653121b553dcc3044a2",
-  //   "model": "TrocarMareaParaBomba",
-  //   "year": 2002,
-  //   "color": "Black",
-  //   "status": true,
-  //   "buyValue": 15.99,
-  //   "doorsQty": 4,
-  //   "seatsQty": 5
-  // }
   it('Testar putCarsServices', async function () {
     const carInput: ICar = {
       model: 'TrocarMareaParaBomba',

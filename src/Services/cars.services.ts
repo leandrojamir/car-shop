@@ -41,6 +41,14 @@ class CarsServices {
     
     return this.createCarDomain(result);
   }
+
+  // 10 - Crie a rota /cars/:id onde seja possível excluir um carro por ID
+  public async deleteCarsServices(car: string) {
+    const CarsModels = new CarODM();
+    const result = await CarsModels.deleteId(car);
+    
+    return this.createCarDomain(result);
+  }
 }
 
 export default CarsServices;

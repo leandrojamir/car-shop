@@ -83,6 +83,39 @@ class CarsControllers {
       return this.res.status(422).json({ message: 'Invalid mongo id' });
     }
   }
+  
+  // 10 - Crie a rota /cars/:id onde seja possível excluir um carro por ID
+  // Através do caminho /cars/:id, apenas o carro com o id presente na URL deve ser excluído;
+  public async deleteCarsControllers() {
+    try {
+      const { id } = this.req.params;
+      const result = await this.service.deleteCarsServices(id);
+
+      return this.res.status(204).json(result);
+    } catch (error) {
+      this.next(error);
+    }
+  }
 } 
 
 export default CarsControllers;
+
+// http://localhost:3001/cars
+// Status: 201 Created
+// Size: 134 Bytes
+// Time: 74 ms
+// {
+//   "id": "63f642f98405736405854e6d",
+//   "model": "Marea",
+//   "year": 2002,
+//   "color": "Black",
+//   "status": true,
+//   "buyValue": 15.99,
+//   "doorsQty": 4,
+//   "seatsQty": 5
+// }
+
+// http://localhost:3001/cars/63f642f98405736405854e6d
+// Status: 204 No Content
+// Size: 0 Bytes
+// Time: 61 ms

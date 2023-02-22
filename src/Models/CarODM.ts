@@ -49,6 +49,11 @@ class CarODM extends AbstractODM<ICar> {
   public async getId(value: string): Promise<ICar | null> {
     return this.model.findById(value);
   }
+  
+  // 10 - Crie a rota /cars/:id onde seja possível excluir um carro por ID
+  public async deleteId(value: string): Promise<ICar | null> {
+    return this.model.findByIdAndDelete(value);
+  }
 }
 
 export default CarODM;
