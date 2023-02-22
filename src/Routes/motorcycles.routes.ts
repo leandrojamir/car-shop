@@ -19,5 +19,10 @@ routes.get('/:id', (req, res, next) => new MotorcyclesControllers(req, res, next
 // O endpoint deve ser acessível através do caminho (/motorcycles/:id);
 routes.put('/:id', (req, res, next) => new MotorcyclesControllers(req, res, next)
   .putMotorcyclesControllers());
+
+// 11 - Crie a rota /motorcycles/:id onde seja possível excluir uma moto por ID
+// O endpoint pode ser acessível através do caminho (/motorcycles/:id);
+routes.delete('/:id', (req, res, next) => new MotorcyclesControllers(req, res, next)
+  .deleteMotorcyclesControllers());
   
 export default routes;

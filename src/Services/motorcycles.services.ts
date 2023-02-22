@@ -42,6 +42,14 @@ class MotorcyclesServices {
 
     return this.createMotorcycleDomain(result);
   }
+
+  // 11 - Crie a rota /motorcycles/:id onde seja possível excluir uma moto por ID
+  public async deleteMotorcyclesServices(motorcycle: string) {
+    const MotorcyclesModels = new MotorcycleODM();
+    const result = await MotorcyclesModels.deleteId(motorcycle);
+    
+    return this.createMotorcycleDomain(result);
+  }
 }
 
 export default MotorcyclesServices;

@@ -47,6 +47,11 @@ class MotorcycleODM extends AbstractODM <IMotorcycle> {
   public async getId(value: string): Promise <IMotorcycle | null> {
     return this.model.findById(value);
   }
+
+  // 11 - Crie a rota /motorcycles/:id onde seja possível excluir uma moto por ID
+  public async deleteId(value: string): Promise <IMotorcycle | null> {
+    return this.model.findByIdAndDelete(value);
+  }
 }
 
 export default MotorcycleODM;
